@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+    displayteams.cpp \
+    displayteamscontroller.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    displayteams.h \
+    displayteamscontroller.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    displayteams.ui
