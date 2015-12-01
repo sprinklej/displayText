@@ -4,9 +4,6 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //DisplayTeams w;
-    //w.show();
-    //w.showText();
 
     DisplayTeamsController disTeamsCon;
     disTeamsCon.showReport("/home/admin/DisplayText/summary.txt", 0); //summary report
