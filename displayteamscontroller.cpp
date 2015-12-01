@@ -19,11 +19,34 @@ void DisplayTeamsController::setTeamWin(DisplayTeams* window)
     disTeamsWin = window;
 }
 
-
-
-void DisplayTeamsController::showSummary()
+void DisplayTeamsController::saveToFile()
 {
-    QString fileN = "/home/admin/DisplayText/summary.txt";
+    // set file save location
+    QDir current = QDir::current();
+    current.cdUp();
+    QString filePath = current.path() + "/test_file_for_00100100.txt"; // will want to change file name to a var
+    QFile newFile(filePath);
+
+    // just some text to put in the file
+    QString text = "This is some text.";
+
+    // add the text to the file
+    newFile.open(QIODevice::WriteOnly | QIODevice::Text); // create/open file - overwrite files of same name
+    if (newFile.isOpen()) { // should always check if file is open
+        QTextStream stream(&newFile);
+        stream << text;
+    }
+
+    newFile.close(); // close file
+
+    showReport(filePath, 1);
+}
+
+
+
+void DisplayTeamsController::showReport(QString fileName, int flag)
+{
+    QString fileN = fileName;
     QFile file(fileN);
     // check if file is open - if not open show an error
     if (!file.open(QIODevice::ReadOnly))
@@ -33,7 +56,10 @@ void DisplayTeamsController::showSummary()
     QTextStream stream(&file);
 
     // send stream to gui to display
-    disTeamsWin->showSummaryText(&stream, fileN);
-
+    if (flag == 0) {
+        disTeamsWin->showSummaryText(&stream,  fileN);
+    } else if (flag == 1) {
+       disTeamsWin->showDetailedText(&stream,  fileN);
+    }
 
 }

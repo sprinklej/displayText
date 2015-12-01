@@ -6,9 +6,11 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-#include <QString>
+#include <QDir>
 
 #include "displayteams.h"
+
+using namespace std;
 
 class DisplayTeamsController
 {
@@ -16,7 +18,8 @@ public:
     DisplayTeamsController();
     ~DisplayTeamsController();
     void setTeamWin(DisplayTeams*window);
-    void showSummary();
+    void saveToFile();
+    void showReport(QString fileName, int flag);
 
 private:
     DisplayTeams *disTeamsWin;

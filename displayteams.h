@@ -4,7 +4,7 @@
 #include <QDialog>
 // included to display files
 #include <QTextStream>
-#include <QString>
+
 
 namespace Ui {
 class DisplayTeams;
@@ -18,6 +18,7 @@ public:
     explicit DisplayTeams(QWidget *parent = 0);
     ~DisplayTeams();
     void showSummaryText(QTextStream *stream, QString FN);
+    void showDetailedText(QTextStream *stream, QString FN);
 
 private:
     Ui::DisplayTeams *ui;

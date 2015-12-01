@@ -9,7 +9,8 @@ int main(int argc, char *argv[])
     //w.showText();
 
     DisplayTeamsController disTeamsCon;
-    disTeamsCon.showSummary();
+    disTeamsCon.showReport("/home/admin/DisplayText/summary.txt", 0); //summary report
+    disTeamsCon.saveToFile(); //Detailed report
 
     return a.exec();
 }
